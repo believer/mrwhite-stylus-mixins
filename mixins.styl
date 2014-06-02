@@ -1,0 +1,103 @@
+/* Useful variables
+--------------------------------------------------------*/
+mobile = "only screen and (max-width: 480px)"
+tablet = "only screen and (min-width: 768px) and (max-width:1024px)"
+
+landscape = "and (orientation: landscape)"
+portrait = "and (orientation: portrait)"
+
+// Specific devices
+iphone5 = "only screen and (min-device-width: 320px) and (max-device-width: 568px)"
+iphone4 = "only screen and (min-device-width: 320px) and (max-device-width: 480px)"
+
+/* Shapes
+--------------------------------------------------------*/
+
+animate(name, duration = .5s, timing = ease, iteration = 1)
+  vendor("animation-name", name)
+  vendor("animation-duration", duration)
+  vendor("animation-timing-function", timing)
+  vendor("animation-iteration-count", iteration)
+
+apperance(arguments)
+  prefix('apperance', arguments)
+
+background-linear-gradient(startPoint, startColor, startInterval, endColor, endInterval, deprecatedWebkitStartPoint = false, deprecatedWebkitEndPoint = false)
+  background-color startColor
+  if deprecatedWebkitStartPoint && deprecatedWebkitEndPoint
+    background-image -webkit-gradient(linear, deprecatedWebkitStartPoint, deprecatedWebkitEndPoint, color-stop(startInterval, startColor), color-stop(endInterval, endColor))
+  background-image -webkit-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image -moz-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image -ms-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image -o-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+  background-image linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+
+border-radius()
+  prefix('border-radius', arguments)
+
+box-shadow()
+  prefix('box-shadow', arguments)
+
+box-sizing()
+  prefix('box-sizing', arguments)
+
+center(x,y)
+  prefix('transform', translateX(x) translateY(y))
+
+column(count = 2, gap = 20px)
+  prefix('column-count', count)
+  prefix('golumn-gap', gap)
+
+mason(count = 2, gap = 25px)
+  vendor("count", count)
+  vendor("gap", gap)
+
+opacity(opacity)
+  opacity (opacity / 100)
+  filter alpha(opacity={opacity})
+
+prefix(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+position(direction1, direction2, position1, position2)
+  {direction1} position1
+  {direction2} position2
+  position absolute
+
+shadow()
+  vendor("box-shadow", arguments)
+
+svg(icon = "")
+  background-image url("/content/images/svg/" + icon + ".svg")
+
+text-overflow()
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+
+transform()
+  prefix('transform', arguments)
+
+transform-origin()
+  vendor('transform-origin', arguments)
+
+translate-pos(x,y)
+  vendor("transform", translateX(x) translateY(y))
+
+transition()
+  prefix('transition', arguments)
+
+user-select()
+  vendor('user-select', arguments)
+
+zoom-cursor(direction = "in")
+  cursor -webkit-zoom- + direction
+  cursor -moz-zoom- + direction
+  cursor -ms-zoom- + direction
+  cursor -o-zoom- + direction
+  cursor zoom- + direction
+
